@@ -13,5 +13,3 @@ Installation
     $ docker exec -it "nom du conteuner php" bash
     $ composer install
     
-    Créer la BDD
-    $ php bin/console doctrine:database:create
