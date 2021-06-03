@@ -11,5 +11,6 @@ Installation
     
     Installer les dépendances symfony 4.4 avec Composer :
     $ docker exec -it "nom du container php" bash
+    $ cd project
     $ composer install
     
