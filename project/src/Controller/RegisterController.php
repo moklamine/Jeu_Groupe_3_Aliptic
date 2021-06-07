@@ -35,9 +35,8 @@ class RegisterController extends AbstractController
         /* instantiate the form */
         $form = $this->createForm(RegisterType::class, $user);
 
-
         /* Listen to the incoming request, manipulate the request object to see if not a post inside */
-        /* Use handleRequest method */
+        /* Use handleRequest methode */
         $form->handleRequest($request);
 
         /* If the form is submitted and valid? */

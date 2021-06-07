@@ -18,13 +18,13 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('pseudo', TextType::class, [
-                'label' => 'Votre pseudo',
+                'label' => 'Votre pseudo *',
                 'attr' => [
                     'placeholder' => 'Veuillez saisir votre pseudo'
                 ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Votre email',
+                'label' => 'Votre email *',
                 'attr' => [
                     'placeholder' => 'Veuillez saisir votre email'
                 ]
@@ -32,10 +32,10 @@ class RegisterType extends AbstractType
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => "Le mot de passe et sa confirmation doivent correspondre",
-                'label' => 'Votre mot de passe',
+                'label' => 'Votre mot de passe *',
                 'required' => true,
-                'first_options' => [ 'label' => 'Votre mot de passe'],
-                'second_options' => [ 'label' => 'Confirmez votre mot de passe'],
+                'first_options' => [ 'label' => 'Votre mot de passe *'],
+                'second_options' => [ 'label' => 'Confirmez votre mot de passe *'],
             ])
 
             ->add('submit', SubmitType::class, [
