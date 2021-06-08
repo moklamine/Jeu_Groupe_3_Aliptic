@@ -42,6 +42,14 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'first_options' => [
                     'label' => 'Votre mot de passe *',
+                    'constraints' => [
+                        new Length([
+                            'min' => 8,
+                            'minMessage' => 'Votre mot de passe doit avoir au moins {{ limit }} caractères',
+                            // max length allowed by Symfony for security reasons
+                            'max' => 4096,
+                        ]),
+                    ],
                     'attr' => [
                         'placeholder' => 'Veuillez saisir votre mot de passe.'
                     ]
