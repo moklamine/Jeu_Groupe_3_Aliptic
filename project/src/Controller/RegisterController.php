@@ -59,9 +59,7 @@ class RegisterController extends AbstractController
                 /* Save the data in the database */
                 $this->entityManager->flush();
 
-                $notification = "Votre inscription s'est bien déroulée";
-            } else {
-                $notification = "L'email renseigné existe déjà";
+                return $this->redirectToRoute('home');
             }
         }
 
