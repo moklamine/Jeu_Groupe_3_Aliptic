@@ -30,7 +30,6 @@ class RegisterController extends AbstractController
     /* The form listen the request */
     public function index(Request $request, UserPasswordEncoderInterface $encoder)
     {
-        $notification = null;
         /* new  User() object */
         $user = new User();
         /* instantiate the form */
@@ -45,12 +44,8 @@ class RegisterController extends AbstractController
             /* Injects into the User () object all the data retrieved from the form */
             $user = $form->getData();
 
-            $search_email = $this->entityManager->getRepository(User::class)->findOneByEmail($user->getEmail());
-
-            if (!$search_email) {
                 /* Store and encode the user's password */
                 $password = $encoder->encodePassword($user, $user->getPassword());
-
                 /* Reinject the password encoded in $user */
                 $user->setPassword($password);
 
@@ -59,13 +54,11 @@ class RegisterController extends AbstractController
                 /* Save the data in the database */
                 $this->entityManager->flush();
 
-                return $this->redirectToRoute('home');
-            }
+                return $this->redirectToRoute('app_login');
         }
 
         return $this->render('register/index.html.twig', [
-            'form' => $form->createView(),
-            'notification' => $notification
+            'form' => $form->createView()
         ]);
     }
 }
