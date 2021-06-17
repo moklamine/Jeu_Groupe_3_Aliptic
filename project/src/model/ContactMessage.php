@@ -11,7 +11,7 @@ class ContactMessage
      * @var string
      * @Assert\NotBlank
      */
-    private $subject;
+    private $sujet;
 
     /**
      * @var string
@@ -31,18 +31,18 @@ class ContactMessage
     /**
      * @return string
      */
-    public function getSubject(): ?string
+    public function getsujet(): ?string
     {
-        return $this->subject;
+        return $this->sujet;
     }
 
     /**
-     * @param string $subject
+     * @param string $sujet
      * @return ContactMessage
      */
-    public function setSubject(string $subject): ContactMessage
+    public function setsujet(string $sujet): ContactMessage
     {
-        $this->subject = $subject;
+        $this->sujet = $sujet;
         return $this;
     }
 

@@ -26,7 +26,7 @@ class ContactController extends AbstractController
             $contactMessage = $form->getData();
 
             $email = (new Email())
-                ->subject($contactMessage->getSubject())
+                ->sujet($contactMessage->getsujet())
                 ->from($contactMessage->getFrom())
                 ->text($contactMessage->getMessage())
                 ->html($contactMessage->getMessage())
