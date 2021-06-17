@@ -44,16 +44,17 @@ class RegisterController extends AbstractController
             /* Injects into the User () object all the data retrieved from the form */
             $user = $form->getData();
 
-            /* Store and encode the user's password */
-            $password = $encoder->encodePassword($user, $user->getPassword());
+                /* Store and encode the user's password */
+                $password = $encoder->encodePassword($user, $user->getPassword());
+                /* Reinject the password encoded in $user */
+                $user->setPassword($password);
 
-            /* Reinject the password encoded in $user */
-            $user->setPassword($password);
+                /* Freeze the data of the user entity */
+                $this->entityManager->persist($user);
+                /* Save the data in the database */
+                $this->entityManager->flush();
 
-            /* Freeze the data of the user entity */
-            $this->entityManager->persist($user);
-            /* Save the data in the database */
-            $this->entityManager->flush();
+                return $this->redirectToRoute('app_login');
         }
 
         return $this->render('register/index.html.twig', [

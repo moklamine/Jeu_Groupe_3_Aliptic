@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="Un compte existe déjà avec cette adresse email")
+ * @UniqueEntity(fields={"pseudo"}, message="Ce pseudo est déjà pris, veuillez en choisir un autre")
  */
 class User implements UserInterface
 {
