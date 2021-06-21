@@ -64,9 +64,6 @@ class RegisterType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => "S'inscrire",
             ])
-            ->add('submit', SubmitType::class, [
-                'label' => "Mot de passe oublié",
-            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
