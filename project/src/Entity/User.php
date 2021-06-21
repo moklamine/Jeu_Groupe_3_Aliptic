@@ -45,6 +45,11 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Game::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $game;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,4 +142,22 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function getGame(): ?Game
+    {
+        return $this->game;
+    }
+
+    public function setGame(Game $game): self
+    {
+        // set the owning side of the relation if necessary
+        if ($game->getUser() !== $this) {
+            $game->setUser($this);
+        }
+
+        $this->game = $game;
+
+        return $this;
+    }
+
 }
