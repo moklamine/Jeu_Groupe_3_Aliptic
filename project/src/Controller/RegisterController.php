@@ -11,6 +11,7 @@ use App\Form\RegisterType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Classe\MailJet;
 
 
 class RegisterController extends AbstractController
@@ -28,8 +29,9 @@ class RegisterController extends AbstractController
      */
 
     /* The form listen the request */
-    public function index(Request $request, UserPasswordEncoderInterface $encoder)
+    public function index(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
+        $notification = null;
         /* new  User() object */
         $user = new User();
         /* instantiate the form */
@@ -44,21 +46,37 @@ class RegisterController extends AbstractController
             /* Injects into the User () object all the data retrieved from the form */
             $user = $form->getData();
 
-                /* Store and encode the user's password */
+            /* Store and encode the user's password */
+            $password = $encoder->encodePassword($user, $user->getPassword());
+            /* Reinject the password encoded in $user */
+            $user->setPassword($password);
+
+            $search_email = $this->entityManager->getRepository(User::class)->findOneByEmail($user->getEmail());
+            /* Freeze the data of the user entity */
+
+            if (!$search_email) {
                 $password = $encoder->encodePassword($user, $user->getPassword());
-                /* Reinject the password encoded in $user */
+
                 $user->setPassword($password);
 
-                /* Freeze the data of the user entity */
                 $this->entityManager->persist($user);
-                /* Save the data in the database */
                 $this->entityManager->flush();
 
-                return $this->redirectToRoute('app_login');
+                $mail = new MailJet();
+                $content = "Bonjour " . $user->getPseudo() . ",<br/> Merci d'avoir créé votre compte client sur La Tour Galamadriabuyak";
+                $mail->send($user->getEmail(), $user->getPseudo(), 'Bienvenue chez La Tour Galamadriabuyak', $content);
+
+                $notification = "Votre inscription s'est bien déroulée";
+
+            } else {
+                $notification = "L'email renseigné existe déjà";
+            }
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('register/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'notification' => $notification
         ]);
     }
 }
