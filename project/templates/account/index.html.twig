@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AccountController!{% endblock %}
+{% block title %}Mon compte  - La Tour Galamadriabuyak{% endblock %}
 
 {% block body %}
 
 <div class="example-wrapper">
-    <h1>Hello {{ app.user.pseudo | upper }}</h1>
+    <h1 class="text-center mt-5 mb-5">Mon compte</h1>
+    <h2>Bienvenue {{ app.user.pseudo | upper }} dans votre espace</h2>
+    <a href="{{ path('account_password') }}">Modifier mot de passe</a>
+    <a href="{{ path('account_pseudo') }}">Modifier pseudo</a>
 </div>
 {% endblock %}

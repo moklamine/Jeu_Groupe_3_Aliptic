@@ -33,7 +33,7 @@
     <div class="d-flex justify-content-between">
       {% if app.user %}
       <div class="">
-        <span><a class="btn btn-outline-success lift text-light bg-primary" type="submit">Mon compte<small>({{ app.user.pseudo }})</small></a></span>
+        <span><a href="{{ path('account') }}" class="btn btn-outline-success lift text-light bg-primary" type="submit">Mon compte<small>({{ app.user.pseudo }})</small></a></span>
         <span><a href="{{ path('app_logout') }}"class="btn btn-outline-success lift text-light bg-primary" type="submit">Déconnexion</a></span>
       </div>
        {% else %}
