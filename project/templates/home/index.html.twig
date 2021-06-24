@@ -3,25 +3,25 @@
 {% block title %}Accueil - La Tour Galamadriabuyak{% endblock %}
 
 {% block body %}
-
-    <div class="container hom">
+<div class="hom">
+    <div class="container">
         <div class="row d-flex justify-content-center">
-
-                <h1 class="col-12 text-center">La Tour Galamadriabuyak</h1>          
+                <h1 class="col-12 text-center homTitle">La Tour Galamadriabuyak</h1>          
             {% if app.user %}              
-                <h5 class="col-12 text-center">Cliquez pour jouer<h5>               
-                <div class="col-12 text-center">
-                    <a class="btn btn-outline-success text-light bg-secondary btn-lg" href="{{ path('gameselection') }}" >Jouer</a>
+                <h5 class="col-12 text-center homText">Cliquez pour jouer<h5>               
+                <div class="col-12 text-center homBtn">
+                    <a class="btn btn-outline-success text-light bg-primary btn-lg homTextBtn" href="{{ path('gameselection') }}" >Jouer</a>
                 </div>  
             {% else %}
             <div>
-                <h5 class="col-12 text-center">Pour jouer connectez-vous<h5>
-                <div class="col-12 text-center">
-                    <a href="#" class=" btn btn-outline-success lift text-light bg-secondary btn-lg disabled">Jouer</a>
+                <h5 class="col-12 text-center homText">Pour jouer connectez-vous<h5>
+                <div class="col-12 text-center homBtn">
+                    <a href="#" class=" btn btn-outline-success text-light border border-success btn-lg disabled homTextBtn">Jouer</a>
                 </div>  
             </div>
             {% endif %}
         </div>
     </div>  
-
+</div>
 {% endblock %}
+

@@ -1,3 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap');
+
+/* Page Home */
 .hom{
-    background-image: url("../../css/img/HomeImg.jpg");
+    background-image:linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.377)), url("../img/HomeImg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Lakki Reddy', cursive;
+    height: 120vh; 
+}
+.homTitle{
+    font-size: 7em;
+    color:darkgoldenrod; 
+    position: relative;
+    top: 20vh;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-name: glissement;
+}
+.homText{
+    font-size: 4em;
+    color: rosybrown;
+    position: relative;
+    top: 25vh;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-name: glissement;
+}
+.homBtn{  
+    position: relative;
+    top: 30vh;
+    animation-duration: 5s;
+    animation-delay: 0s;
+    animation-name: glissement;
+}
+.homTextBtn{
+    font-size: 3em;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+@keyframes glissement {
+    from {
+      margin-left: 500%;
+      width: 300%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
 }
