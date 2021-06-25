@@ -3,28 +3,22 @@
 {% block title %}Accueil - La Tour Galamadriabuyak{% endblock %}
 
 {% block body %}
-
-    <div class="">
-        <h1 class="text-center">Titre du jeu</h1>
-        {%if app.user%}
-            <h5 class="text-center">Cliquez pour jouer<h5>
-            <div class="row justify-content-center">
-                <a  
-                href="{{ path('gameselection') }}"
-                class=" btn btn-outline-success lift text-light bg-secondary btn-lg"> 
-                    Jouer
-                </a>
-            </div>  
-        {% else %}
-            <h5 class="text-center">Pour jouer connectez-vous<h5>
-            <div class="row justify-content-center">
-                <a  
-                href="#"
-                class=" btn btn-outline-success lift text-light bg-secondary btn-lg disabled"> 
-                    Jouer
-                </a>
-            </div>  
-        {% endif %}
+<div class="hom">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+                <h1 class="col-12 text-center homTitle">La Tour Galamadriabuyak</h1>          
+            {% if app.user %}              
+                <h5 class="col-12 text-center homText">Cliquez pour jouer<h5>               
+                <div class="col-12 text-center homBtn">
+                    <a class="btn btn-outline-success text-light bg-primary btn-lg homTextBtn" href="{{ path('gameselection') }}" >Jouer</a>
+                </div>  
+            {% else %}
+            <div>
+                <h5 class="col-12 text-center homText">Pour jouer connectez-vous<h5> 
+            </div>
+            {% endif %}
+        </div>
     </div>  
-
+</div>
 {% endblock %}
+
