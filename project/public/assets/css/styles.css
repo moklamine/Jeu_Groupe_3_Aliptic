@@ -54,6 +54,8 @@
 
 .fight-scene {
     background-image: url('../img/game/Gabarit.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 80vh;
 }
 
