@@ -7,11 +7,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Lakki Reddy', cursive;
-    height: 120vh; 
+    height: 120vh;
 }
 .homTitle{
     font-size: 7em;
-    color:darkgoldenrod; 
+    color:darkgoldenrod;
     position: relative;
     top: 20vh;
     text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
@@ -29,7 +29,7 @@
     animation-delay: 0s;
     animation-name: glissement;
 }
-.homBtn{  
+.homBtn{
     position: relative;
     top: 30vh;
     animation-duration: 5s;
@@ -45,9 +45,28 @@
       margin-left: 500%;
       width: 300%;
     }
-  
+
     to {
       margin-left: 0%;
       width: 100%;
     }
+}
+
+
+/* Page Game */
+.fight-scene {
+    background-image: url('../img/game/Raziel.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 95vh;
+}
+.action-response {
+    opacity: .8;
+    border: 1px solid ;
+    height: 5rem;
+}
+.gameAction {
+    position: relative;
+    top: 500px;
+    margin-left: 5vh;
 }
