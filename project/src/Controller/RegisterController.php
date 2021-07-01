@@ -47,9 +47,9 @@ class RegisterController extends AbstractController
             $user = $form->getData();
 
             /* Store and encode the user's password */
-            $password = $encoder->encodePassword($user, $user->getPassword());
+            // $password = $encoder->encodePassword($user, $user->getPassword());
             /* Reinject the password encoded in $user */
-            $user->setPassword($password);
+            // $user->setPassword($password);
 
             $search_email = $this->entityManager->getRepository(User::class)->findOneByEmail($user->getEmail());
             /* Freeze the data of the user entity */

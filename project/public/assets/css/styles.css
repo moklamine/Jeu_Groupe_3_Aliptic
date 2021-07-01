@@ -52,35 +52,21 @@
     }
 }
 
+
+/* Page Game */
 .fight-scene {
-    background-image: url('../img/game/Gabarit.png');
+    background-image: url('../img/game/Raziel.png');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 80vh;
+    height: 95vh;
 }
-
 .action-response {
-    background-color: blueviolet ;
-    opacity: .6;
+    opacity: .8;
     border: 1px solid ;
-    height: 10rem;
+    height: 5rem;
 }
-
-.menu-action {
-    margin-top: 30rem;
-
-}
-
-.btn-action {
-    font-size: 3em;
-    opacity: .7;
-}
-
-.dropdown-menu {
-    background: darkgoldenrod;
-}
-
-.dropdown-menu-magic {
-    margin-left: 10em !important;
-    margin-top: -2em !important;
+.gameAction {
+    position: relative;
+    top: 500px;
+    margin-left: 5vh;
 }
