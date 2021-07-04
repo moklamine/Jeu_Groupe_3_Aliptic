@@ -1,11 +1,11 @@
 //****************************** DEBUT PROGRAMME *****************************//
-$(document).ready(function () {                                               //                                  
-//****************************************************************************// 
-alert("changement des hp");
+$(document).ready(function () {                                               //
+//****************************************************************************//
+
 personaHP(450,800);
 personaMP(100,250);
 personaSta(600,1050);
-showText("Salut nieznizoendiozenodinzeoidnzeoidnzeoindzoienieonzioendionezo");
+showText("");
 manageClickAttack(true);
 manageClickBalm(true);
 manageClickStoneThrowing(true);
@@ -17,7 +17,7 @@ manageClickFireball(true);
             document.getElementById("attack").addEventListener("click", eventClickAttack = function() {
                 alert( document.getElementById("blockAction"));
                 //document.getElementById("blockAction").style.display = "none";
-                ajaxCall("actionPlayerAttack");        
+                ajaxCall("actionPlayerAttack");
             });
         }
         else{
@@ -30,7 +30,7 @@ manageClickFireball(true);
     function manageClickBalm(actived){
         if(actived===true){
             document.getElementById("balm").addEventListener("click", eventClicBalm = function() {
-                ajaxCall("actionPlayerBalm");        
+                ajaxCall("actionPlayerBalm");
             });
         }
         else{
@@ -43,7 +43,7 @@ manageClickFireball(true);
     function manageClickStoneThrowing(actived){
         if(actived===true){
             document.getElementById("stoneThrowing").addEventListener("click", eventClicStoneThrowing = function() {
-                ajaxCall("actionPlayerStoneThrowing");        
+                ajaxCall("actionPlayerStoneThrowing");
             });
         }
         else{
@@ -56,7 +56,7 @@ manageClickFireball(true);
     function manageClickFireball(actived){
         if(actived===true){
             document.getElementById("fireball").addEventListener("click", eventClicFireball = function() {
-                ajaxCall("actionPlayerFireball");        
+                ajaxCall("actionPlayerFireball");
             });
         }
         else{
@@ -81,8 +81,8 @@ manageClickFireball(true);
             hpRed.innerHTML = "";
         }
         else{
-            hpRed.innerHTML = "HP : " +  hpCurrent + "/" + hpMax;  
-            hpGreen.innerHTML ="";  
+            hpRed.innerHTML = "HP : " +  hpCurrent + "/" + hpMax;
+            hpGreen.innerHTML ="";
         }
     }
     //----------------------------------------------------------------------------//
@@ -103,7 +103,7 @@ manageClickFireball(true);
             mpRed.innerHTML = "";
         }
         else{
-            mpRed.innerHTML = "MP : " +  mpCurrent + "/" + mpMax;    
+            mpRed.innerHTML = "MP : " +  mpCurrent + "/" + mpMax;
             mpBlue.innerHTML = "";
         }
     }
@@ -125,7 +125,7 @@ manageClickFireball(true);
             staRed.innerHTML = "";
         }
         else{
-            staRed.innerHTML = "EN : " +  staCurrent + "/" + staMax;    
+            staRed.innerHTML = "EN : " +  staCurrent + "/" + staMax;
             staOrange.innerHTML = "";
         }
     }
@@ -134,7 +134,7 @@ manageClickFireball(true);
     //---------------------------- Fonction : Afficher text ----------------------//
     function showText(text){
         document.getElementById("frameText").innerHTML = text;
-    } 
+    }
     //----------------------------------------------------------------------------//
 
     //---------------------------- Fonction : Appel Ajax -------------------------//
