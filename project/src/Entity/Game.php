@@ -48,6 +48,16 @@ class Game
      */
     private $user;
 
+    /**
+     * @ORM\OneToOne(targetEntity=ennemy::class, cascade={"persist", "remove"})
+     */
+    private $ennemy;
+
+    /**
+     * @ORM\OneToOne(targetEntity=persona::class, cascade={"persist", "remove"})
+     */
+    private $persona;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -132,6 +142,30 @@ class Game
         $this->flag_in_tower = false;
         $this->level_tower = 0;
         $this->flat_figth_finished = false;
+
+        return $this;
+    }
+
+    public function getEnnemy(): ?ennemy
+    {
+        return $this->ennemy;
+    }
+
+    public function setEnnemy(?ennemy $ennemy): self
+    {
+        $this->ennemy = $ennemy;
+
+        return $this;
+    }
+
+    public function getPersona(): ?persona
+    {
+        return $this->persona;
+    }
+
+    public function setPersona(?persona $persona): self
+    {
+        $this->persona = $persona;
 
         return $this;
     }
