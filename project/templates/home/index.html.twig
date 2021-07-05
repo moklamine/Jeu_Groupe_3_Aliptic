@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - La Tour Galamadriabuyak{% endblock %}
+
+{% block body %}
+<div class="hom">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+                <h1 class="col-12 text-center homTitle">La Tour Galamadriabuyak</h1>          
+            {% if app.user %}              
+                <h5 class="col-12 text-center homText">Cliquez pour jouer<h5>               
+                <div class="col-12 text-center homBtn">
+                    <a class="btn btn-outline-success text-light bg-primary btn-lg homTextBtn" href="{{ path('gameselection') }}" >Jouer</a>
+                </div>  
+            {% else %}
+            <div>
+                <h5 class="col-12 text-center homText">Pour jouer connectez-vous<h5> 
+            </div>
+            {% endif %}
+        </div>
+    </div>  
+</div>
+{% endblock %}
+

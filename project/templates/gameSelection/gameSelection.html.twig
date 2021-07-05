@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - La Tour Galamadriabuyak{% endblock %}
+
+{% block body %}
+    <div class="">
+        <h1 class="text-center">Sélection de la partie</h1>
+            <div class="row justify-content-center">
+                <a  
+                href="{{ path('newgame') }}"
+                class=" btn btn-outline-success lift text-light bg-secondary btn-lg"> 
+                    Nouvelle partie
+                </a>     
+            </div>  
+        {% if selection is same as(1) %}
+            <div class="row justify-content-center">
+                <a  
+                href="{{ path('game') }}"
+                class=" btn btn-outline-success lift text-light bg-secondary btn-lg"> 
+                    Reprendre partie
+                </a>
+            </div>  
+        {% else %}
+            <div class="row justify-content-center">
+                <a  
+                href="#"
+                class=" btn btn-outline-success lift text-light bg-secondary btn-lg disabled"> 
+                    Reprendre partie
+                </a>
+            </div>  
+        {% endif %}
+    </div>
+    
+
+{% endblock %}

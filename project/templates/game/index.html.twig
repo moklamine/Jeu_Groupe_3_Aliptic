@@ -1,0 +1,71 @@
+{% block stylesheets %}
+<style>
+    .navbar {
+        display:none; 
+    }
+</style>
+{% endblock %}
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - La Tour Galamadriabuyak{% endblock %}
+
+{% block body %}
+
+<!-- Emplacement scène combat-->
+<div class="fight-scene">
+    <div class="container-fluid">
+
+        <div class="row align-items-start p-3">
+
+            <div class="col-3">
+                <!-- Barre de vie du personnage -->
+                <div class="progress">
+                    <div id ="hpGreen" class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div id ="hpRed"   class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <!-- Barre de MP du personnage -->
+                <div class="progress border">
+                    <div id="mpBlue" class="progress-bar  bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div id="mpRed" class="progress-bar bg-danger" role="progressbar" style="width: 50%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <!-- Barre d'endurance du personnage -->
+                <div class="progress">
+                    <div id="staOrange" class="progress-bar  bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div id="staRed" class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+            <div class="col-6 action-response bg-dark offset-3">
+                <!-- Cadre de texte -->
+                <p id="frameText" class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quod nisi porro laudantium. Ipsam, ut quas. Iusto officiis maiores laudantium. Quam illo facere provident quos. Ut fugit quos earum culpa.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="blockAction" class="row gameAction">
+
+        <div class="col-12">
+            <button id="attack" class="btn btn-secondary" type="button">
+                Attaque
+            </button>
+        </div>
+        <div class="col-12 pt-2 dropright">
+            <button tabindex="-1" href="#" class="btn btn-secondary px-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Magie
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a id="balm"class="dropdown-item" tabindex="-1" href="#">Beaume</a>
+                <a id="fireball" class="dropdown-item" tabindex="-1" href="#">Boule de feu</a>
+                <a id="stoneThrowing" class="dropdown-item" tabindex="-1" href="#">Lancer de pierre</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+
+
+
