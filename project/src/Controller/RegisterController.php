@@ -71,7 +71,7 @@ class RegisterController extends AbstractController
             } else {
                 $notification = "L'email renseigné existe déjà";
             }
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('register/index.html.twig', [

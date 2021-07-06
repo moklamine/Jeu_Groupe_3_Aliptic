@@ -67,6 +67,11 @@
 }
 .gameAction {
     position: relative;
-    top: 500px;
+    top: 50vh;
     margin-left: 5vh;
+}
+.ennemiBar {
+    position: relative;
+    top: 0; 
+    left: 105vh;
 }
