@@ -1,15 +1,69 @@
 //****************************** DEBUT PROGRAMME *****************************//
 $(document).ready(function () {                                               //                                  
 //****************************************************************************// 
-alert("changement des hp");
-personaHP(450,800);
-personaMP(100,250);
-personaSta(600,1050);
-showText("Salut nieznizoendiozenodinzeoidnzeoidnzeoindzoienieonzioendionezo");
-manageClickAttack(true);
-manageClickBalm(true);
-manageClickStoneThrowing(true);
-manageClickFireball(true);
+
+//var json = {"prenom":"Marc","nom":"Ford"};
+var json = "{prenom:'Marc',nom:'Ford'}";
+alert(json);
+//var personne = $.parseJSON(json);
+alert(json);
+console.log(json.prenom + " " + json.nom); //Cette ligne affiche le texte Marc Ford.
+
+
+//*************************** Initialisation du programme ********************//
+manageClickEntryDungeon();                                                    //
+manageClickAttack(true);                                                      //
+manageClickBalm(true);                                                        //
+manageClickStoneThrowing(true);                                               //
+manageClickFireball(true);                                                    //
+//InitializeGame();
+//showSceneFirecamp();                                                        //
+showSceneFight();                                                           //
+EnnemyHP(123,1000);                                                            //
+//personaHP(450,800);                                                         //
+//personaMP(100,250);                                                         //
+//personaSta(600,1050);                                                       //
+//showText("Test du bloc texte");                                             //
+//****************************************************************************//
+
+    //-------------------- Fonction : Initialisation du jeu ------------------//
+    function InitializeGame(){
+        ajaxCall("actionInitialization");        
+    }
+    //----------------------------------------------------------------------------//
+
+
+    //--------------------- Fonction : Affichage du feu de camp ------------------//
+    function showSceneFirecamp(){
+        document.getElementById("fight-scene").style.display = "none"; 
+        document. body.style.backgroundColor = 'black' ;       
+        document.getElementById("firecamp-scene").style.display = "block";
+        imgEntryDungeon = document.getElementById("imgEntryDungeon");
+        //Référence taille window.innerWidth = 1821px window.innerHeight = 926px
+        imgEntryDungeon.style.left   = (1350/1821*window.innerWidth) + "px";
+        imgEntryDungeon.style.top    = (370/926*window.innerHeight)  + "px";
+        imgEntryDungeon.style.width  = (50/1821*window.innerWidth)   + "px";
+        imgEntryDungeon.style.height = (50/926*window.innerHeight)   + "px";
+    }
+    //----------------------------------------------------------------------------//
+
+    //---------------- Fonction : Affichage de la scène de combat ----------------//
+    function showSceneFight(){
+        document.getElementById("fight-scene").style.display = "block";  
+        document. body.style.backgroundColor = 'black' ;
+        document.getElementById("firecamp-scene").style.display = "none";
+    }
+    //----------------------------------------------------------------------------//
+
+    //-------------------- Fonction : gestion clique entrer tour -----------------//
+    function manageClickEntryDungeon(){
+
+        document.getElementById("imgEntryDungeon").addEventListener("click", eventClickAttack = function() {
+            ajaxCall("actionPlayerEntryDungeon");        
+        });
+
+    }
+    //----------------------------------------------------------------------------//
 
     //---------------------- Fonction : gestion clique attaque -------------------//
     function manageClickAttack(actived){
@@ -64,6 +118,20 @@ manageClickFireball(true);
         }
     }
     //----------------------------------------------------------------------------//
+
+    //---------------------------- Fonction : HP Ennemy --------------------------//
+    function EnnemyHP(hpCurrent, hpMax){
+        hpGreenMonster = document.getElementById("hpGreenMonster");
+        hpRedMonster   = document.getElementById("hpRedMonster");
+
+        hpGreenMonsterValue = (hpCurrent / hpMax) * 100;
+        hpRedMonsterValue = 100 - hpGreenMonsterValue;
+
+        hpGreenMonster.style.width = hpGreenMonsterValue + "%";
+        hpRedMonster.style.width   = hpRedMonsterValue + "%";
+    }
+    //----------------------------------------------------------------------------//
+
 
     //---------------------------- Fonction : HP personnage ----------------------//
     function personaHP(hpCurrent, hpMax){

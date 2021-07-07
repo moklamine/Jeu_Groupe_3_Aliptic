@@ -14,7 +14,7 @@
 {% block body %}
 
 <!-- Emplacement scène combat-->
-<div class="fight-scene">
+<div id="fight-scene" class="fight-scene">
     <div class="container-fluid">
 
         <div class="row align-items-start p-3">
@@ -42,6 +42,13 @@
                 <p id="frameText" class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quod nisi porro laudantium. Ipsam, ut quas. Iusto officiis maiores laudantium. Quam illo facere provident quos. Ut fugit quos earum culpa.</p>
             </div>
         </div>
+        <!-- Barre de vie du ennemi -->
+        <div class="col-4 ennemiBar">
+            <div class="progress">
+                <div id ="hpGreenMonster" class="progress-bar  bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">HP</div>
+                <div id ="hpRedMonster"   class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
     </div>
 
     <div id="blockAction" class="row gameAction">
@@ -60,10 +67,17 @@
                 <a id="fireball" class="dropdown-item" tabindex="-1" href="#">Boule de feu</a>
                 <a id="stoneThrowing" class="dropdown-item" tabindex="-1" href="#">Lancer de pierre</a>
             </div>
-        </div>
-        
+        </div>     
     </div>
 </div>
+
+<!-- Emplacement scène feu de camp -->
+<div id="firecamp-scene" width="100%"  height="100%" margin="0" padding="0">
+    <img id="firecampGif" src="{{ asset('assets/img/game/firecamp.gif') }}" />
+    <img id="imgEntryDungeon" src="{{ asset('assets/img/game/entryDungeon.png') }}">
+</div>
+    
+<script src="{{ asset('assets/js/ajaxClient.js') }}"></script>
 {% endblock %}
 
 
