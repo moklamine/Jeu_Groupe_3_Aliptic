@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Ennemy;
+use App\Entity\Persona;
 use App\Repository\GameRepository;
 use Doctrine\ORM\Mapping as ORM;
 

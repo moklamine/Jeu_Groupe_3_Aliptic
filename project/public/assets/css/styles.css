@@ -55,6 +55,7 @@
 
 /* Page Game */
 .fight-scene {
+    display:none;
     background-image: url('../img/game/Raziel.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -67,6 +68,44 @@
 }
 .gameAction {
     position: relative;
-    top: 500px;
+    top: 50vh;
     margin-left: 5vh;
+}
+
+.ennemiBar {
+    position: relative;
+    top: 0; 
+    left: 105vh;
+}
+
+#firecamp-scene {
+    display:none;
+}
+
+#firecampGif {
+position:absolute;
+display:block;
+top:0px;
+left:0px;
+width:100%;
+height:100%;
+margin:0px; 
+padding:0px;
+
+}
+
+#imgEntryDungeon {
+
+    display:block;
+    position:absolute;
+    border-radius: 5px;
+    /*
+    width:5%;
+    height:5%;
+    top:45%;
+      left:75%;
+
+    top:45vh;
+    left:75vh;
+    */
 }
