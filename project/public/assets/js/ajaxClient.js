@@ -14,10 +14,10 @@ manageClickAttack(true);                                                        
 manageClickBalm(true);                                                            //
 manageClickStoneThrowing(true);                                                   //
 manageClickFireball(true);                                                        //
-//InitializeGame();                                                               //
+InitializeGame();                                                               //
 showSceneFirecamp();                                                              //
 //showSceneFight();                                                               //
-EnnemyHP(123,1000);                                                               //
+//EnnemyHP(123,1000);                                                               //
 //personaHP(450,800);                                                             //
 //personaMP(100,250);                                                             //
 //personaSta(600,1050);                                                           //
@@ -67,7 +67,7 @@ EnnemyHP(123,1000);                                                             
     function manageClickAttack(actived){
         if(actived===true){
             document.getElementById("attack").addEventListener("click", eventClickAttack = function() {
-                alert( document.getElementById("blockAction"));
+                
                 //document.getElementById("blockAction").style.display = "none";
                 ajaxCall("actionPlayerAttack");        
             });
@@ -227,7 +227,9 @@ EnnemyHP(123,1000);                                                             
             
             //Retour avec succès
             success: function (dataJSON, status) {
+                
                 tab_data=JSON.parse(dataJSON);
+                
                 //Parcours des paramètres retournés du serveur avec temporisation
                 executeSequenceAjax();
             },
@@ -249,7 +251,7 @@ EnnemyHP(123,1000);                                                             
     function executeSequenceAjax(){
         if( tab_data_index <= ( tab_data.length - 1 ) ){
             //Aiguilleur des actions retournées par le serveur
-                aiguilleurAction();
+            aiguilleurAction();
             //Incrémentation de l'index de la table data
             tab_data_index++;
             setTimeout(executeSequenceAjax,5000);
@@ -261,10 +263,14 @@ EnnemyHP(123,1000);                                                             
     function aiguilleurAction(){
         switch (tab_data[tab_data_index].action) {
             //Montre le dungeon la scène de combat
-            case 'showDungeon':
-                scene = document.getElementById("fight-scene");
-                scene.style.backgroundImage = "url('asset/assets/img/game/Morbol.png')";
+            case 'showSceneFight':
+                action = tab_data[tab_data_index];
                 showSceneFight();
+                EnnemyHP(action.hpCurrentEnnemy,action.hpMaxEnnemy);                                                               //
+                personaHP(action.hpCurrentPersona,action.hpMaxPersona);                                                             //
+                personaMP(action.mpCurrentPersona,action.mpMaxPersona);                                                             //
+                personaSta(action.staminaCurrentPersona,action.staminaMaxPersona);
+
                 break;
             case 'Mangoes':
             case 'Papayas':
