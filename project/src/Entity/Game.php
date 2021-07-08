@@ -51,12 +51,12 @@ class Game
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity=ennemy::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=ennemy::class, cascade={"all", "remove"})
      */
     private $ennemy;
 
     /**
-     * @ORM\OneToOne(targetEntity=persona::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=persona::class, cascade={"all", "remove"})
      */
     private $persona;
 

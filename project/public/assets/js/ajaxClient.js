@@ -2,31 +2,29 @@
 $(document).ready(function () {                                               //                                  
 //****************************************************************************// 
 
-//var json = {"prenom":"Marc","nom":"Ford"};
-var json = "{prenom:'Marc',nom:'Ford'}";
-alert(json);
-//var personne = $.parseJSON(json);
-alert(json);
-console.log(json.prenom + " " + json.nom); //Cette ligne affiche le texte Marc Ford.
 
 
-//*************************** Initialisation du programme ********************//
-manageClickEntryDungeon();                                                    //
-manageClickAttack(true);                                                      //
-manageClickBalm(true);                                                        //
-manageClickStoneThrowing(true);                                               //
-manageClickFireball(true);                                                    //
-//InitializeGame();
-//showSceneFirecamp();                                                        //
-showSceneFight();                                                           //
-EnnemyHP(123,1000);                                                            //
-//personaHP(450,800);                                                         //
-//personaMP(100,250);                                                         //
-//personaSta(600,1050);                                                       //
-//showText("Test du bloc texte");                                             //
-//****************************************************************************//
+//*************************** Initialisation du programme ************************//
+//Tableau retourné par ajax                                                       //
+var tab_data = null;                                                              //
+//Indexe pour le parcours du tableau retourné par ajax                            //
+var tab_data_index = 0;                                                           //
+manageClickEntryDungeon();                                                        //
+manageClickAttack(true);                                                          //
+manageClickBalm(true);                                                            //
+manageClickStoneThrowing(true);                                                   //
+manageClickFireball(true);                                                        //
+InitializeGame();                                                               //
+showSceneFirecamp();                                                              //
+//showSceneFight();                                                               //
+//EnnemyHP(123,1000);                                                               //
+//personaHP(450,800);                                                             //
+//personaMP(100,250);                                                             //
+//personaSta(600,1050);                                                           //
+//showText("Test du bloc texte");                                                 //
+//********************************************************************************//
 
-    //-------------------- Fonction : Initialisation du jeu ------------------//
+    //-------------------- Fonction : Initialisation du jeu ----------------------//
     function InitializeGame(){
         ajaxCall("actionInitialization");        
     }
@@ -69,7 +67,7 @@ EnnemyHP(123,1000);                                                            /
     function manageClickAttack(actived){
         if(actived===true){
             document.getElementById("attack").addEventListener("click", eventClickAttack = function() {
-                alert( document.getElementById("blockAction"));
+                
                 //document.getElementById("blockAction").style.display = "none";
                 ajaxCall("actionPlayerAttack");        
             });
@@ -207,26 +205,33 @@ EnnemyHP(123,1000);                                                            /
 
     //---------------------------- Fonction : Appel Ajax -------------------------//
     function ajaxCall(actionPlayer) {
+        //Initialisation du tableau de donné ajax
+        tab_data = null;
+        //Initailisation de l'index du tableau
+        tab_data_index = 0;
+
         //Création de la requête ajax
         $.ajax({
             //Définition de la route vers le serveur
-            url: '/game/combat', //TODO : Modifier le nom de la route peut être
+            url: '/game/ajax', //TODO : Modifier le nom de la route peut être
             //Protocole d'envoie des données vers le serveur
-            type: 'POST',
+            type: 'GET',
             //Données envoyées au serveur
-            data: 'actionPlayer' + actionPlayer, //TODO : Voir si c'est le bon format
+            data: 'actionPlayer=' + actionPlayer, //TODO : Voir si c'est le bon format
             //Type de réponse : asynchrone ou synchrone
             async: true,
             //Permet d’indiquer s’il faut utiliser une réponse en cache si disponible
             cache: false,
             //Type de données retourné par le serveur
             dataType: 'json',
-
+            
             //Retour avec succès
             success: function (dataJSON, status) {
-                //data=JSON.parse(dataJSON);
-                showText(dataJSON);
-
+                
+                tab_data=JSON.parse(dataJSON);
+                
+                //Parcours des paramètres retournés du serveur avec temporisation
+                executeSequenceAjax();
             },
             //Retour sans succès
             error: function (xhr, textStatus, errorThrown) {
@@ -242,8 +247,38 @@ EnnemyHP(123,1000);                                                            /
     }
     //----------------------------------------------------------------------------//
 
+    //---------------------- Fonction : Exécution Séquence Ajax ------------------//
+    function executeSequenceAjax(){
+        if( tab_data_index <= ( tab_data.length - 1 ) ){
+            //Aiguilleur des actions retournées par le serveur
+            aiguilleurAction();
+            //Incrémentation de l'index de la table data
+            tab_data_index++;
+            setTimeout(executeSequenceAjax,5000);
+        }
+    } 
+    //----------------------------------------------------------------------------//
 
+    //----------------------- Fonction : Aiguilleur Action -----------------------//
+    function aiguilleurAction(){
+        switch (tab_data[tab_data_index].action) {
+            //Montre le dungeon la scène de combat
+            case 'showSceneFight':
+                action = tab_data[tab_data_index];
+                showSceneFight();
+                EnnemyHP(action.hpCurrentEnnemy,action.hpMaxEnnemy);                                                               //
+                personaHP(action.hpCurrentPersona,action.hpMaxPersona);                                                             //
+                personaMP(action.mpCurrentPersona,action.mpMaxPersona);                                                             //
+                personaSta(action.staminaCurrentPersona,action.staminaMaxPersona);
 
+                break;
+            case 'Mangoes':
+            case 'Papayas':
+
+          }
+
+    } 
+    //----------------------------------------------------------------------------//
 
 
 //******************************* FIN PROGRAMME ******************************//

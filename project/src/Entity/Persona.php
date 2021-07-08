@@ -378,4 +378,31 @@ class Persona
 
         return $this;
     }
+
+    public function initialize(): self
+    {
+        $this->hp_max = 50;
+        $this->hp_current = 50;
+        $this->pm_max = 20;
+        $this->pm_current = 20;
+        $this->stamina_max = 30;
+        $this->stamina_current  = 30;     
+        $this->strength = 10;
+        $this->magic = 10;
+        $this->water_level = 0;
+        $this->max_water_progression_level = 0;
+        $this->current_water_level_progression = 0;
+        $this->fire_level = 0;
+        $this->max_fire_level_progression = 0;
+        $this->current_fire_level_progression = 0;
+        $this->earth_level = 0;
+        $this->max_earth_level_progression = 0;
+        $this->current_earth_level_progression = 0;
+        $this->physical_resistance = 0;
+        $this->magic_resistance = 0;
+        $this->initiative = 0;
+        $this->action_time = 0;
+
+        return $this;
+    }
 }

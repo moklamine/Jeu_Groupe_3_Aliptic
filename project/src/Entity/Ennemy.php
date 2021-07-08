@@ -72,4 +72,10 @@ class Ennemy
 
         return $this;
     }
+
+    public function initialize(){
+        $this->type = "demo";
+        $this->hp_current = 60;
+        $this->action_time = 0;
+    }
 }
